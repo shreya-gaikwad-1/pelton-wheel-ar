@@ -3,164 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pelton Wheel in 3D and AR</title>
-<meta name="description" content="Explore a Pelton wheel turbine in 3D, or place it on your table in augmented reality.">
+<title>Pelton Wheel in your room</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 <style>
-:root{
-  --deep:#0E2A3A; --mid:#1D5C73; --foam:#EAF4F2; --bronze:#B87333; --mist:#CFE3E3; --ink:#0B1E29;
-}
+:root{--deep:#0E2A3A;--mid:#1D5C73;--foam:#EAF4F2;--bronze:#B87333;--mist:#CFE3E3}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font:400 1.0625rem/1.6 "IBM Plex Sans",system-ui,sans-serif;color:var(--ink);background:var(--foam)}
-h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;margin:0}
-a{color:var(--mid)}
+body{margin:0;min-height:100vh;background:var(--deep);color:var(--foam);font:400 1.0625rem/1.6 "IBM Plex Sans",system-ui,sans-serif}
 :focus-visible{outline:3px solid var(--bronze);outline-offset:3px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
-
-/* hero */
-.hero{background:var(--deep);color:var(--foam);padding:2.5rem 0 0}
-.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);font-weight:800;letter-spacing:-.02em;max-width:12ch}
-.hero p.lead{max-width:52ch;color:var(--mist);margin:1rem 0 0}
-.stage{position:relative;margin-top:1.5rem}
-model-viewer{width:100%;height:min(68vh,560px);background:radial-gradient(ellipse at 50% 35%,#245f78 0%,var(--deep) 70%);--poster-color:transparent}
-.ar-btn{position:absolute;right:1rem;bottom:1rem;background:var(--bronze);color:#fff;border:0;border-radius:999px;padding:.8rem 1.3rem;font:500 1rem "IBM Plex Sans",sans-serif;cursor:pointer}
-.ar-btn:hover{background:#9c5f27}
-.controls{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0 1.5rem}
-.controls button{background:transparent;color:var(--foam);border:1.5px solid var(--mid);border-radius:6px;padding:.5rem .9rem;font:500 .95rem "IBM Plex Sans",sans-serif;cursor:pointer}
-.controls button[aria-pressed="true"]{background:var(--foam);color:var(--deep);border-color:var(--foam)}
-.hint{color:var(--mist);font-size:.9rem;margin:0;padding-bottom:1.5rem}
-
-/* sections */
-section{padding:3.5rem 0}
-h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:1rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem 2.5rem}
-.part{border-top:3px solid var(--bronze);padding-top:.7rem}
-.part h3{font-size:1.25rem;font-weight:500}
-.part p{margin:.35rem 0 0}
-.specs{background:var(--deep);color:var(--foam)}
-.specs dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:0}
-.specs dt{color:var(--mist);font-size:.9rem}
-.specs dd{margin:.15rem 0 0;font:800 1.9rem "Bricolage Grotesque",sans-serif}
-.formula{font:500 1.1rem "IBM Plex Sans",sans-serif;background:#fff;border-left:4px solid var(--mid);padding:.8rem 1rem;margin:.8rem 0;max-width:60ch}
-.scan{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;align-items:start}
-.scan figure{margin:0}
-.scan img{width:100%;max-width:240px;display:block;border:8px solid #fff}
-.scan figcaption{margin-top:.5rem}
-footer{padding:2rem 0;color:#4b6470;font-size:.9rem}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.wrap{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 3rem}
+h1{font:800 clamp(2.4rem,9vw,4.2rem)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;margin:0 0 .5rem}
+p{margin:.4rem 0;color:var(--mist)}
+model-viewer{width:100%;height:55vh;margin:1.25rem 0;background:radial-gradient(ellipse at 50% 35%,#245f78 0%,var(--deep) 70%);--poster-color:transparent}
+.ar-btn{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);background:var(--bronze);color:#fff;border:0;border-radius:999px;padding:.9rem 1.6rem;font:500 1.05rem "IBM Plex Sans",sans-serif;cursor:pointer;white-space:nowrap}
+ol{padding-left:1.2rem;margin:1rem 0}
+li{margin:.5rem 0}
+li strong{color:#fff}
+a{color:#fff}
+.note{font-size:.95rem}
 </style>
 </head>
 <body>
+<div class="wrap">
+  <h1>The wheel, in your room</h1>
+  <p>Place the Pelton wheel on a real table at life size and walk around it.</p>
 
-<header class="hero">
-  <div class="wrap">
-    <h1>The Pelton wheel</h1>
-    <p class="lead">A water jet hits 18 split buckets and spins a shaft. Turn the model, watch it run, or place it on your own table.</p>
+  <model-viewer
+    src="../models/pelton_wheel.glb"
+    alt="3D model of a Pelton wheel turbine"
+    camera-controls touch-action="pan-y"
+    shadow-intensity="1"
+    autoplay animation-name="Operate"
+    ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed"
+    camera-orbit="35deg 70deg auto">
+    <button slot="ar-button" class="ar-btn">View in your room</button>
+  </model-viewer>
 
-    <div class="stage">
-      <model-viewer id="mv"
-        src="models/pelton_wheel.glb"
-        alt="3D model of a Pelton wheel turbine with nozzle, buckets, shaft and frame"
-        camera-controls touch-action="pan-y"
-        shadow-intensity="1" exposure="1.05"
-        autoplay animation-name="Operate"
-        ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed"
-        camera-orbit="35deg 70deg auto">
-        <button slot="ar-button" class="ar-btn">View in your room</button>
-      </model-viewer>
-    </div>
+  <ol>
+    <li><strong>Tap</strong> "View in your room".</li>
+    <li><strong>Move</strong> your phone slowly over a table or the floor until the wheel appears.</li>
+    <li><strong>Walk around</strong> it to see the nozzle, buckets and shaft from every side.</li>
+  </ol>
 
-    <div class="controls" role="group" aria-label="Animation">
-      <button type="button" data-anim="Operate" aria-pressed="true">Running</button>
-      <button type="button" data-anim="Startup" aria-pressed="false">Start-up</button>
-      <button type="button" data-anim="Spin" aria-pressed="false">Wheel only</button>
-      <button type="button" data-anim="Jet_Flow" aria-pressed="false">Water jet</button>
-      <button type="button" id="pause" aria-pressed="false">Pause</button>
-    </div>
-    <p class="hint">Drag to rotate, pinch or scroll to zoom. On a phone, tap "View in your room" and point the camera at a table or floor.</p>
-  </div>
-</header>
-
-<main>
-  <section>
-    <div class="wrap">
-      <h2>What you are looking at</h2>
-      <div class="grid">
-        <div class="part"><h3>Nozzle</h3><p>Turns the water's pressure into a fast, narrow jet. A needle inside it adjusts the flow.</p></div>
-        <div class="part"><h3>Water jet</h3><p>Leaves the nozzle at a speed set by the head: v = √(2gH).</p></div>
-        <div class="part"><h3>Buckets</h3><p>Each bucket has two cups with a splitter ridge in the middle. It divides the jet and turns it almost 180°, which pushes the wheel.</p></div>
-        <div class="part"><h3>Disc and rim</h3><p>Holds the 18 buckets evenly around the circle.</p></div>
-        <div class="part"><h3>Hub and shaft</h3><p>Carry the torque to a generator or machine.</p></div>
-        <div class="part"><h3>Bearings and frame</h3><p>Support the shaft and keep the wheel aligned with the jet.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="specs">
-    <div class="wrap">
-      <h2>Key facts</h2>
-      <dl>
-        <div><dt>Turbine type</dt><dd>Impulse</dd></div>
-        <div><dt>Best suited to</dt><dd>High head, low flow</dd></div>
-        <div><dt>Buckets in this model</dt><dd>18</dd></div>
-        <div><dt>Best bucket speed</dt><dd>About 0.45 × jet speed</dd></div>
-        <div><dt>Typical efficiency</dt><dd>Up to about 90%</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>How it works</h2>
-      <p style="max-width:60ch">All of the water's pressure energy becomes speed in the nozzle. The jet then strikes the buckets at atmospheric pressure, so the wheel is pushed by the change in the water's momentum, not by pressure. The water leaves the bucket slowly and falls away into the tailrace.</p>
-      <p class="formula">Jet speed: v = √(2 g H)</p>
-      <p class="formula">Power: P = η ρ g Q H</p>
-      <p style="max-width:60ch">H is the head in metres, Q the flow in m³/s, ρ the water density (1000 kg/m³) and η the overall efficiency.</p>
-    </div>
-  </section>
-
-  <section style="background:var(--mist)">
-    <div class="wrap">
-      <h2>Scan to open</h2>
-      <div class="scan">
-        <figure>
-          <img src="qr/qr-ar.png" alt="QR code that opens the AR page">
-          <figcaption><strong>AR page.</strong> Opens the wheel at life size on your table.<br><a href="ar/">shreya-gaikwad-1.github.io/pelton-wheel-ar/ar/</a></figcaption>
-        </figure>
-        <figure>
-          <img src="qr/qr-web.png" alt="QR code that opens this web page">
-          <figcaption><strong>Web page.</strong> This interactive 3D page.<br><a href="./">shreya-gaikwad-1.github.io/pelton-wheel-ar/</a></figcaption>
-        </figure>
-      </div>
-      <p style="margin-top:1.5rem;max-width:60ch">AR works on Android phones with Google Play Services for AR, and on iPhone or iPad with iOS 12 or later. Nothing to install.</p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">3D model: Pelton wheel (add the model's author and licence here if it came from Sketchfab or another source). Built with Google's model-viewer.</div>
-</footer>
-
-<script>
-  const mv = document.getElementById('mv');
-  const animButtons = document.querySelectorAll('[data-anim]');
-  const pauseBtn = document.getElementById('pause');
-  animButtons.forEach(b => b.addEventListener('click', () => {
-    mv.animationName = b.dataset.anim;
-    mv.play();
-    pauseBtn.setAttribute('aria-pressed','false'); pauseBtn.textContent = 'Pause';
-    animButtons.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-  }));
-  pauseBtn.addEventListener('click', () => {
-    const paused = pauseBtn.getAttribute('aria-pressed') === 'true';
-    if (paused) { mv.play(); } else { mv.pause(); }
-    pauseBtn.setAttribute('aria-pressed', String(!paused));
-    pauseBtn.textContent = paused ? 'Pause' : 'Play';
-  });
-</script>
+  <p class="note">Works on Android phones with Google Play Services for AR, and on iPhone or iPad with iOS 12 or later. If the button does not show, your device does not support AR; open this page on a phone.</p>
+  <p class="note"><a href="../">Open the full 3D page</a></p>
+</div>
 </body>
 </html>
